@@ -1,2 +1,6 @@
-# ConsoleSpaceKiller
+﻿# ConsoleSpaceKiller
 Консольная игра а-ля Space Invaders
+
+тестовая площадка, и просто возможность попрактиковаться)
+
+с цважением.
