@@ -30,6 +30,12 @@ void Field::down()
 				arr[i + 1][j]->fixF();
 				arr[i][j] = NULL;
 			}
+			if (arr[i][j] && arr[i][j]->getArm())
+			{
+				arr[i - 1][j] = arr[i][j];
+				arr[i - 1][j]->fixF();
+				arr[i][j] = NULL;
+			}
 		}
 	}
 	for (int i = 0; i < 30; i++)
@@ -44,6 +50,12 @@ void Field::down()
 				arr[i][j] = NULL;
 				delete del;
 			}
+			if (arr[i][j] && arr[i][j]->getArm() && i == 0)
+			{
+				Aster* del = arr[i][j];
+				arr[i][j] = NULL;
+				delete del;
+			}
 		}
 	}
 }
@@ -51,6 +63,10 @@ void Field::pos(int pos)
 {
 	int i = rand() % 5;
 	arr[0][pos] = new Aster(i);
+}
+void Field::insertArm(int posArm)
+{
+	arr[29][posArm] = new BlastArm();
 }
 
 Field::Field()

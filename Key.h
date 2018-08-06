@@ -1,14 +1,18 @@
 #pragma once
 #include<thread>
+#include "Roc.h"
+
 class Key
 {
 private:
-	char line[31];
+	Roc* line[31];
 	int standart;
-	int rocet;
+	int posRoc;
+	Roc roc;
 
 public:
-	void check(bool&);
+	/*int shootPos();*/
+	int check();
 	void show();
 	void fixStandart();
 

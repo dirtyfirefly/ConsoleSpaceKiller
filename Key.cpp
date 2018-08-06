@@ -9,7 +9,7 @@ using namespace std;
 void Key::fixStandart()
 {
 }
-void Key::check(bool& i)
+int Key::check()
 {
 	int tmp = 0;
 	if (_kbhit())
@@ -19,26 +19,39 @@ void Key::check(bool& i)
 
 	switch ((char)tmp)
 	{
+	case (int)'A':
+	case (int)'a':
 	case (int)'4':
-		line[rocet] = ' ';
-		line[--rocet] = '^';
+		line[posRoc] = NULL;
+		line[--posRoc] = &roc;
 		break;
+	case (int)'D':
+	case (int)'d':
 	case (int)'6':
-		line[rocet] = ' ';
-		line[++rocet] = '^';
+		line[posRoc] = NULL;
+		line[++posRoc] = &roc;
 		break;
 	case (int)' ':
-		i = 1;
+		if (roc.shoot())
+			return posRoc;
 		break;
 	default:
-		break;	
+		break;		
 	}
+	return -1;
 }
+//int Key::shootPos()
+//{
+//	return posRoc;
+//}
 void Key::show()
 {
 	for (int i = 0; i < 31; i++)
 	{
-		std::cout << line[i];
+		if (line[i] == NULL)
+			std::cout << " ";
+		else
+			std::cout << line[i]->getFace();
 	}
 }
 
@@ -47,10 +60,10 @@ Key::Key()
 	standart = 1;
 	for (int i = 0; i < 31; i++)
 	{
-		line[i] = ' ';
+		line[i] = NULL;
 	}
-	line[14] = '^';
-	rocet = 14;
+	line[14] = new Roc();
+	posRoc = 14;
 }
 Key::~Key()
 {

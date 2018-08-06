@@ -8,7 +8,7 @@
 
 using namespace std;
 
-bool f = false;
+int f = -1;
 
 void boom(Field& obj1, mutex& m)
 {
@@ -26,10 +26,10 @@ void boom(Field& obj1, mutex& m)
 		if (!(count++ % 5))
 			obj1.pos(ast1);
 		obj1.show();
-		if (f)
+		if (f >= 0)
 		{
-			/*obj1.boom(count + 1, 14);
-			count = -1;*/
+			obj1.insertArm(f);
+			f = -1;
 		}
 		m.unlock();
 		Sleep(200);
@@ -40,7 +40,7 @@ void rock(Key& r, mutex& m)
 {
 	while (true)
 	{
-		r.check(f);
+		f = r.check();
 		m.lock();
 		r.show();
 		m.unlock();
