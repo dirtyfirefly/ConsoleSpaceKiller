@@ -10,10 +10,10 @@ protected:
 	bool fStep;
 
 public:
-	bool getF();
-	void fixF();
-	char getFace();
-	bool getArm();
+	bool getF();	//fStep
+	void fixF();	//fStep
+	char getFace();	//
+	bool getArm();	//
 
 	Aster(int);
 	Aster();

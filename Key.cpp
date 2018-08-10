@@ -6,9 +6,13 @@
 using namespace std;
 
 
+//пока просто заглушка
+//отвечает за изменение стандартного набора клавишь управления
+//может быть сбито врагом для реализации механики путанных клавишь
 void Key::fixStandart()
 {
 }
+//отслеживание нажатия клавишь
 int Key::check()
 {
 	int tmp = 0;
@@ -17,35 +21,41 @@ int Key::check()
 		tmp = _getch();
 	}
 
+	//возможные варианты нажатий
 	switch ((char)tmp)
 	{
-	case (int)'A':
+	case (int)'A':	//перемещение влево
 	case (int)'a':
 	case (int)'4':
+		if (posRoc == 0)	//если край поля, то стоит
+			break;
 		line[posRoc] = NULL;
 		line[--posRoc] = &roc;
 		break;
-	case (int)'D':
+	case (int)'D':	//перемещение вправо
 	case (int)'d':
 	case (int)'6':
+		if (posRoc == 30)	//если край поля, то стоит
+			break;
 		line[posRoc] = NULL;
 		line[++posRoc] = &roc;
 		break;
-	case (int)' ':
+	case (int)' ':	//стрельба
+		//если выстрелил, возвращает номер столбца
 		if (roc.shoot())
 			return posRoc;
 		break;
 	default:
 		break;		
 	}
+	//если игрок не стрелял
 	return -1;
 }
-//int Key::shootPos()
-//{
-//	return posRoc;
-//}
+//отоброжение на экран
 void Key::show()
 {
+	//у каждого объекта есть поле face для его отоброжения на экран
+	//для NULL облостей подразумевается пробел
 	for (int i = 0; i < 31; i++)
 	{
 		if (line[i] == NULL)
@@ -55,6 +65,8 @@ void Key::show()
 	}
 }
 
+//создаёт нижний ряд поля и устанавливает 
+//ракету в его центр (14)
 Key::Key()
 {
 	standart = 1;
@@ -68,4 +80,3 @@ Key::Key()
 Key::~Key()
 {
 }
-
