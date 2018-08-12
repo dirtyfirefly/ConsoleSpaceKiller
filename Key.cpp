@@ -74,7 +74,7 @@ Key::Key()
 	{
 		line[i] = NULL;
 	}
-	line[14] = new Roc();
+	line[14] = &roc;
 	posRoc = 14;
 }
 Key::~Key()

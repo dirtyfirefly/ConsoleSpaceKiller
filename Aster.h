@@ -1,21 +1,35 @@
+//****************************************************//
+// dirty_firefly                                      //
+//****************************************************//
+// SpaceKiller                                        //
+//                                                    //
+// clss Aster(h) - начальный класс врагов             //
+//----------------------------------------------------//
+// alpha                                              //
+//****************************************************//
+
 #pragma once
+#include "HP.h"
+
 class Aster
 {
 private:
-	char faces[5] = { '*', 'T', 'I', 'V', 'O' };
+	char faces[5] = { '*', 'T', 'I', 'V', 'O' };// типы врагов
 
 protected:
-	bool arm;
-	char face;
-	bool fStep;
+	HP hp;
+	bool arm;		// принадлежность снаряду
+	char face;		// иконка
+	bool fStep;		// было ли перемещение 
+					// в определённый момент времени
 
 public:
-	bool getF();	//fStep
-	void fixF();	//fStep
+	bool getF();	//(fStep) 
+	void fixF();	//(fStep) поднимает либо опускает флаг
 	char getFace();	//
 	bool getArm();	//
 
-	Aster(int);
-	Aster();
+	Aster(int);		// выбирает иконку врагу, создаёт не снаряды
+	Aster();		// зачем-то создаёт пустой неподвижный объект
 	virtual~Aster();
 };

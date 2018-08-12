@@ -17,7 +17,7 @@
 class Field
 {
 private:
-	Aster* arr[30][31];
+	Aster* arr[30][31];		//области поля
 
 public:
 	void insertArm(int);	//появление снаряда

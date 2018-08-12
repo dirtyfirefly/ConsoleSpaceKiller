@@ -17,16 +17,16 @@
 class Roc
 {
 private:
-	MechanicShoot sh;
-	Arm arm;
-	HP hp;
-	char face;
+	MechanicShoot sh;	// механизм стрельбы
+	Arm arm;			// механизм подсчёта снарядов
+	HP hp;				// жизни
+	char face;			// иконка
 
 public:
-	char getFace();
-	bool shoot();
+	char getFace();		// отоброжение на экране
+	bool shoot();		// стрельба
 
-	Roc();
+	Roc();				//задаёт face
 	~Roc();
 };
 

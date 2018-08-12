@@ -1,13 +1,22 @@
+//****************************************************//
+// dirty_firefly                                      //
+//****************************************************//
+// SpaceKiller                                        //
+//                                                    //
+// class MechanicShoot(h) - отвечает за стрельбу      //
+//----------------------------------------------------//
+// alpha                                              //
+//****************************************************//
+
 #pragma once
 class MechanicShoot
 {
 private:
 
-
 public:
-	bool shoot(int);
+	bool shoot(int);	//стрельба зависимая от arm ракеты
 
-	MechanicShoot();
+	MechanicShoot();	//
 	~MechanicShoot();
 };
 

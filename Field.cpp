@@ -2,8 +2,9 @@
 #include <iostream>
 #include <Windows.h>
 
+using namespace std;
 
-//вывод на экран//
+//вывод на экран
 void Field::show()
 {
 	for (int i = 0; i < 30; i++)

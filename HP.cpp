@@ -1,22 +1,23 @@
 #include "HP.h"
 
-void HP::downHP()
+// уменьшает hp
+bool HP::downHP(int c)
 {
-	--hp;
+	hp -= c;
+	if (hp <= 0)
+		return true;
+	return false;
 }
-void HP::upHP()
+// увеличивает hp
+void HP::upHP(int c)
 {
-	++hp;
+	hp += c;
+	if (hp > 10)
+		hp = 10;
 }
-int HP::getHP()
-{
-	return hp;
-}
-
-HP::HP() : hp(1)
-{
-}
-HP::HP(char ch)
+// устанавливает количество hp
+// в зависимсоти от face объекта
+void HP::init(char ch)
 {
 	switch (ch)
 	{
@@ -33,6 +34,16 @@ HP::HP(char ch)
 		hp = 1;
 		break;
 	}
+}
+//гетер
+int HP::getHP()
+{
+	return hp;
+}
+
+//hp == 1
+HP::HP() : hp(1)
+{
 }
 HP::~HP()
 {

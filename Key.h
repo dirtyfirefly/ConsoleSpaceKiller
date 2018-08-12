@@ -16,10 +16,11 @@
 class Key
 {
 private:
-	Roc* line[31];	//
-	int standart;	//
-	int posRoc;		//
-	Roc roc;		//
+	Roc* line[31];	// массив отведённый под ракету
+	int standart;	// число при котором 
+					// клавиши управления стандартны
+	int posRoc;		// позиция рокеты в данный момент
+	Roc roc;		// объект ракеты
 
 public:
 	int check();		//отслеживание нажатия клавишь
