@@ -12,11 +12,12 @@
 #pragma once
 #include<thread>
 #include "Roc.h"
+#include "globals.h"
 
 class Key
 {
 private:
-	Roc* line[31];	// массив отведённый под ракету
+	Roc* line[L];	// массив отведённый под ракету
 	int standart;	// число при котором 
 					// клавиши управления стандартны
 	int posRoc;		// позиция рокеты в данный момент

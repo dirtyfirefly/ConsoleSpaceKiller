@@ -40,6 +40,7 @@ int Key::check()
 		line[posRoc] = NULL;
 		line[++posRoc] = &roc;
 		break;
+	case (int)'5':
 	case (int)' ':	//стрельба
 		//если выстрелил, возвращает номер столбца
 		if (roc.shoot())
@@ -55,8 +56,9 @@ int Key::check()
 void Key::show()
 {
 	//у каждого объекта есть поле face для его отоброжения на экран
+	//
 	//для NULL облостей подразумевается пробел
-	for (int i = 0; i < 31; i++)
+	for (int i = 0; i < L; i++)
 	{
 		if (line[i] == NULL)
 			std::cout << " ";
@@ -66,16 +68,16 @@ void Key::show()
 }
 
 //создаёт нижний ряд поля и устанавливает 
-//ракету в его центр (14)
+//ракету в его центр (L / 2)
 Key::Key()
 {
 	standart = 1;
-	for (int i = 0; i < 31; i++)
+	for (int i = 0; i < L; i++)
 	{
 		line[i] = NULL;
 	}
-	line[14] = &roc;
-	posRoc = 14;
+	line[L / 2] = &roc;
+	posRoc = L / 2;
 }
 Key::~Key()
 {

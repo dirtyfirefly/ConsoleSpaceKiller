@@ -10,6 +10,8 @@
 //****************************************************//
 
 #pragma once
+#include "globals.h"
+
 class Arm
 {
 private:

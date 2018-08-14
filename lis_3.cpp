@@ -15,11 +15,12 @@
 #include <thread>
 #include <mutex>
 #include <ctime>
+#include "globals.h"
 
 using namespace std;
 
-//сделать заголовочный файл для глобальной переменной и констант
-int f = -1;
+////сделать заголовочный файл для глобальной переменной и констант
+int flagShootPlaer = -1;
 
 //1-ый блок кода
 //часть кода обрабатывающаяся в потоке
@@ -40,24 +41,24 @@ void boom(Field& obj1, mutex& m)
 							//предположительно - никак
 							//но зачем-то она была
 	{
-		ast1 = rand() % 30;
+		ast1 = rand() % H;	//рендомное появление астеройдов
 		m.lock();
 		system("cls");
 		//перемещение
 		obj1.down();
 		//частота появления астеройдов
-		if (!(count++ % 5))
+		if (!(count++ % 10))
 			//появление астеройда
 			obj1.pos(ast1);
 		//вывод на экран
 		obj1.show();
-		//проверка нажатия игрока на пробел
-		if (f >= 0)
+		//проверка флага нажатия игрока на пробел
+		if (flagShootPlaer >= 0)
 		{
 			//отоброжение выстрела на поле в нужном месте
-			obj1.insertArm(f);
+			obj1.insertArm(flagShootPlaer);
 			//обнуление выстрела
-			f = -1;
+			flagShootPlaer = -1;
 		}
 		m.unlock();
 		//5 кадров в секунду
@@ -73,7 +74,7 @@ void rock(Key& r, mutex& m)
 	while (true)
 	{
 		//не синхронизированная проверка нажатия клавишь
-		f = r.check();
+		flagShootPlaer = r.check();
 		//синхронизированное отоброжение в консоли
 		m.lock();
 		r.show();

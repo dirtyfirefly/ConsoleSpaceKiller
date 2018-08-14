@@ -13,11 +13,15 @@
 #include "Key.h"
 #include "Aster.h"
 #include "BlastArm.h"
+#include "globals.h"
+#include "Path.h" 
 
 class Field
 {
 private:
-	Aster* arr[30][31];		//области поля
+	Aster* arr[H][L];		//области поля
+	Path path;				//алгоритмы передвижения
+							//объектов по полю
 
 public:
 	void insertArm(int);	//появление снаряда

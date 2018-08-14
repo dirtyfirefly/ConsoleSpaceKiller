@@ -17,7 +17,7 @@ int Arm::getAmt()
 // изначально устанавливает 10 патронов
 Arm::Arm()
 {
-	maxAmt = 10;
+	maxAmt = AMU[0];
 	amt = maxAmt;
 }
 Arm::~Arm()

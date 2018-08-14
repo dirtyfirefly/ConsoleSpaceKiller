@@ -1,18 +1,15 @@
 #include "HP.h"
 
 // уменьшает hp
-bool HP::downHP(int c)
+void HP::downHP(int c)
 {
 	hp -= c;
-	if (hp <= 0)
-		return true;
-	return false;
 }
 // увеличивает hp
 void HP::upHP(int c)
 {
 	hp += c;
-	if (hp > 10)
+	if (hp > MAXHP)
 		hp = 10;
 }
 // устанавливает количество hp
@@ -24,8 +21,8 @@ void HP::init(char ch)
 	case '^':
 		hp = 3;
 		break;
-	case '*':
-		hp = 1;
+	case 'O':
+		hp = 3;
 		break;
 	case 'T':
 		hp = 2;
