@@ -63,7 +63,7 @@ void Path::upMoveStd(Aster* arr[][L])
 			{
 				//проверка объекта на пути и принодлежность к не снарядам
 				if (boomWO.boomWithArm(arr[i - 1][j]) &&
-					!arr[i - 1][j]->getArm())
+					!(arr[i - 1][j]->getArm()))
 				{
 					//снижение жизней объекта
 					arr[i - 1][j]->hpDown(arr[i][j]);

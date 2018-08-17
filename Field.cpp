@@ -51,8 +51,14 @@ void Field::down()
 			/*if (arr[i][j])
 				arr[i][j]->fixF();*/
 			//удаляет астеройд
-			if (i == 29 && arr[i][j])
+			if (i == H - 1 && arr[i][j])
 			{
+				//заполняет инфо о линии сталкновения (29)
+				if (arr[i][j] && !arr[i][j]->getArm())
+					lineAttack[j] = true;
+				else
+					lineAttack[j] = false;
+				//удаляет
 				Aster* del = arr[i][j];
 				arr[i][j] = NULL;
 				delete del;
@@ -91,6 +97,12 @@ void Field::insertArm(int posArm)
 	arr[H - 1][posArm] = new BlastArm();
 }
 
+//геттер
+bool* Field::getLineAttack()
+{
+	return lineAttack;
+}
+
 //создаёт пустое поле
 Field::Field()	
 {
@@ -100,6 +112,10 @@ Field::Field()
 		{
 			arr[i][j] = NULL;
 		}
+	}
+	for (int i = 0; i < L; i++)
+	{
+		lineAttack[i] = false;
 	}
 }
 Field::~Field()

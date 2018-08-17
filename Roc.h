@@ -18,11 +18,12 @@ class Roc
 {
 private:
 	MechanicShoot sh;	// механизм стрельбы
-	Arm arm;			// механизм подсчёта снарядов
-	HP hp;				// жизни
 	char face;			// иконка
 
 public:
+	HP hp;				// жизни
+	Arm arm;			// механизм подсчёта снарядов
+
 	char getFace();		// отоброжение на экране
 	bool shoot();		// стрельба
 

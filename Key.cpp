@@ -66,6 +66,24 @@ void Key::show()
 			std::cout << line[i]->getFace();
 	}
 }
+// проверяте сталкновение ракеты
+void Key::boomRocet(bool* lineAttack)
+{
+	for (int i = 0; i < L; i++)
+	{
+		//проверяем на сталкновение
+		//уменьшаем жизни если да
+		if (lineAttack[i] && i == posRoc)
+			roc.hp.downHP(DMG[0]);
+		lineAttack[i] = false;
+	}
+}
+
+//геттер
+Roc Key::getRoc()
+{
+	return roc;
+}
 
 //создаёт нижний ряд поля и устанавливает 
 //ракету в его центр (L / 2)
