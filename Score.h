@@ -3,29 +3,27 @@
 //****************************************************//
 // SpaceKiller                                        //
 //                                                    //
-// clss Path(h) - отвечает за алгоритмы перемещений   //
-// объектов по полю                                   //
+// class Score(h) - отвечает за очки получаемые       //
+// игроком после уничтожения врага                    //
 //----------------------------------------------------//
 // alpha                                              //
 //****************************************************//
 
 #pragma once
-#include "Aster.h"
-#include "BoomMechanic.h"
 #include "globals.h"
 
-class Path
+class Score
 {
 private:
-	BoomMechanic boomWO;
-	int scoreTmp;
+	int score;	// очки объекта
 
 public:
-	void downMoveStd(Aster* arr[][L]);	// сдвиг вниз на 1
-	void upMoveStd(Aster* arr[][L]);	// сдвиг вверх на 1
+	void init(char);	//устанавливает необходимое количество очков
+						//в зависимости от объекта
 
-	int getScore();	//
+	int getScore();		//
 
-	Path();			//
-	~Path();
+	Score();			//устанавливает score в 0
+	~Score();
 };
+

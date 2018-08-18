@@ -19,10 +19,42 @@
 
 using namespace std;
 
-////сделать заголовочный файл для глобальных констант
+////сделать класс для глобальных констант
 static int flagShootPlaer = -1; // линия выстрела ракеты
 static bool* lineAttack = NULL;	// инфо о линии сталкновения
 static bool play = true;		// флаг исполнения всех условий
+static int score = 0;			// количество очков игрока
+
+//блок кода 1
+//описание ниже
+void boom(Field&, mutex&);
+//блок кода 2
+//описание ниже
+void rock(Key&, mutex&);
+
+int main(void)
+{
+	//сделать unicode
+	system("cls");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+
+	Key key;		//создание управления ракетой
+	Field field;	//создание поля
+	mutex m;		//объект синхронизации
+
+	//запуск блоков кода на выполнение
+	thread t1(boom, ref(field), ref(m));
+	thread t2(rock, ref(key), ref(m));
+	
+	//привязки потоков к main
+	if (t1.joinable())
+		t1.join();
+	if (t2.joinable())
+		t2.join();
+
+	return 0;
+}
 
 //1-ый блок кода
 //часть кода обрабатывающаяся в потоке
@@ -45,6 +77,10 @@ void boom(Field& obj1, mutex& m)
 		system("cls");
 		//перемещение
 		obj1.down();
+		// увеличиваем количество очков
+		score += obj1.getScore();
+		/*cout << score << endl;
+		system("pause");*/
 		//передаёт инфо о линии сталкновения
 		lineAttack = obj1.getLineAttack();
 		/*for (int i = 0; i < L; i++)
@@ -91,33 +127,13 @@ void rock(Key& r, mutex& m)
 		// вывод на экран
 		r.show();
 		m.unlock();
+		//вывод состояния ракеты
+		r.showR(score);
 		//5 кадров в секунду
 		Sleep(200);
 	}
 	//hp ракеты < 1
 	cout << endl << "\t\tgame over" << endl;
-}
-
-int main(void)
-{
-	//сделать unicode
-	system("cls");
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
-
-	Key key;		//создание управления ракетой
-	Field field;	//создание поля
-	mutex m;		//объект синхронизации
-
-	//запуск блоков кода на выполнение
-	thread t1(boom, ref(field), ref(m));
-	thread t2(rock, ref(key), ref(m));
-	
-	//привязки потоков к main
-	if (t1.joinable())
-		t1.join();
-	if (t2.joinable())
-		t2.join();
-
-	return 0;
+	cout << "score: " << score << endl;
+	system("pause");
 }

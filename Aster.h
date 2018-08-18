@@ -11,6 +11,7 @@
 #pragma once
 #include "HP.h"
 #include "globals.h"
+#include "Score.h"
 
 class Aster
 {
@@ -18,7 +19,8 @@ private:
 	char faces[FACE] = { '*', 'T', 'I', 'V', 'O' };// типы врагов
 
 protected:
-	HP hp;
+	Score score;	// очки
+	HP hp;			// жизни
 	bool arm;		// принадлежность снаряду
 	char face;		// иконка
 	bool fStep;		// было ли перемещение 
@@ -34,6 +36,7 @@ public:
 	bool getF();	//(fStep)
 	char getFace();	//
 	bool getArm();	//
+	int getScore();	//
 
 	Aster(int);		// выбирает иконку врагу, создаёт не снаряды
 	Aster();		// зачем-то создаёт пустой неподвижный объект

@@ -97,10 +97,14 @@ void Field::insertArm(int posArm)
 	arr[H - 1][posArm] = new BlastArm();
 }
 
-//геттер
+//геттеры
 bool* Field::getLineAttack()
 {
 	return lineAttack;
+}
+int Field::getScore()
+{
+	return path.getScore();
 }
 
 //создаёт пустое поле

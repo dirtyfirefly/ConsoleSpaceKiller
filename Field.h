@@ -31,6 +31,7 @@ public:
 	void pos(int);			//рендомное появление астеройда
 	
 	bool* getLineAttack();	//
+	int getScore();			//
 
 	Field();				//создаёт пустое поле
 	~Field();

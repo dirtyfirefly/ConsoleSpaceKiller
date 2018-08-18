@@ -31,14 +31,21 @@ int Aster::getHP()
 {
 	return hp.getHP();
 }
+int Aster::getScore()
+{
+	return score.getScore();
+}
 
 // выбирает иконку врагу, создаёт не снаряды
+// устанавлевает колличество hp
+// и score
 Aster::Aster(int i)
 {
 	face = faces[i];
 	fStep = true;
 	arm = false;
 	hp.init(face);
+	score.init(face);
 	damage = 1;
 }
 // зачем-то создаёт пустой неподвижный объект

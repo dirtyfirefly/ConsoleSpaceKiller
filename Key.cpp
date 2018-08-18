@@ -78,6 +78,13 @@ void Key::boomRocet(bool* lineAttack)
 		lineAttack[i] = false;
 	}
 }
+//отоброжает состояние ракеты
+void Key::showR(int score)
+{
+	cout << endl << "| life: " << roc.hp.getHP() << "|\t"
+		<< "| arm: -- |" << endl
+		<< "\t| score: " << score << "|" << endl;
+}
 
 //геттер
 Roc Key::getRoc()

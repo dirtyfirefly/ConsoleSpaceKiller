@@ -23,6 +23,8 @@ void Path::downMoveStd(Aster* arr[][L])
 					//если уровень hp <= 0 удаляем
 					if (arr[i + 1][j]->getHP() <= 0)
 					{
+						//сохраняем полученные очки
+						scoreTmp += arr[i + 1][j]->getScore();
 						Aster* tmp = arr[i + 1][j];
 						arr[i + 1][j] = NULL;
 						delete tmp;
@@ -69,16 +71,18 @@ void Path::upMoveStd(Aster* arr[][L])
 					arr[i - 1][j]->hpDown(arr[i][j]);
 					//снижение жизней снаряда
 					arr[i][j]->hpDown(arr[i - 1][j]);
-					//если уровень hp <= 0 удаляем
+					//если уровень hp объекта <= 0 удаляем
 					if (arr[i - 1][j]->getHP() <= 0)
 					{
+						//сохраняем полученные очки
+						scoreTmp += arr[i - 1][j]->getScore();
 						Aster* tmp = arr[i - 1][j];
 						arr[i - 1][j] = NULL;
 						delete tmp;
 						/*std::cout << "del aster" << std::endl;*/
 						/*continue;*/
 					}
-					//если уровень hp <= 0 удаляем
+					//если уровень сняряда hp <= 0 удаляем
 					if (arr[i][j]->getHP() <= 0)
 					{
 						Aster* tmp = arr[i][j];
@@ -100,8 +104,20 @@ void Path::upMoveStd(Aster* arr[][L])
 	}
 }
 
-//
-Path::Path()
+//геттер
+int Path::getScore()
+{
+	// временное хранилище
+	// будет удалено по оканчании работы метода
+	int tmp = scoreTmp;
+	// обнуляем счётчик очков
+	scoreTmp = 0;
+	// передаём очки игроку
+	return tmp;
+}
+
+// scoreTmp = 0
+Path::Path() : scoreTmp(0)
 {
 }
 Path::~Path()
