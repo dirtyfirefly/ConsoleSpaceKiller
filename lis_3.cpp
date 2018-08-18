@@ -21,7 +21,7 @@ using namespace std;
 
 ////сделать класс для глобальных констант
 static int flagShootPlaer = -1; // линия выстрела ракеты
-static bool* lineAttack = NULL;	// инфо о линии сталкновения
+static int* lineAttack = NULL;	// инфо о линии сталкновения
 static bool play = true;		// флаг исполнения всех условий
 static int score = 0;			// количество очков игрока
 

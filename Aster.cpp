@@ -35,10 +35,14 @@ int Aster::getScore()
 {
 	return score.getScore();
 }
+bool Aster::getHelper()
+{
+	return helper;
+}
 
 // выбирает иконку врагу, создаёт не снаряды
 // устанавлевает колличество hp
-// и score
+// и score и damage и helper
 Aster::Aster(int i)
 {
 	face = faces[i];
@@ -47,6 +51,13 @@ Aster::Aster(int i)
 	hp.init(face);
 	score.init(face);
 	damage = 1;
+	if (face == faces[5])
+	{
+		helper = true;
+		damage = 0;
+	}
+	else
+		helper = false;
 }
 // зачем-то создаёт пустой неподвижный объект
 Aster::Aster()

@@ -2,10 +2,14 @@
 
 // востановление патронов до
 // максимального количества 
-void Arm::regenAmt(bool flag)
+void Arm::regenAmt()
 {
-	if (flag)
 		amt = maxAmt;
+}
+// отнимает 1 снаряд
+void Arm::shoot()
+{
+	--amt;
 }
 
 //гетер

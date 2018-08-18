@@ -16,7 +16,7 @@
 class Aster
 {
 private:
-	char faces[FACE] = { '*', 'T', 'I', 'V', 'O' };// типы врагов
+	char faces[FACE] = { '*', 'T', 'I', 'V', 'O', '!' };// типы врагов
 
 protected:
 	Score score;	// очки
@@ -26,6 +26,7 @@ protected:
 	bool fStep;		// было ли перемещение 
 					// в определённый момент времени
 	int damage;		// урон
+	bool helper;	// при сталкновении восполняет arm
 
 public:
 	void hpDown(Aster*);	// отвечает за подение hp
@@ -37,6 +38,7 @@ public:
 	char getFace();	//
 	bool getArm();	//
 	int getScore();	//
+	bool getHelper();//
 
 	Aster(int);		// выбирает иконку врагу, создаёт не снаряды
 	Aster();		// зачем-то создаёт пустой неподвижный объект

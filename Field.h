@@ -22,7 +22,7 @@ private:
 	Aster* arr[H][L];		//области поля
 	Path path;				//алгоритмы передвижения
 							//объектов по полю
-	bool lineAttack[L];		//линия сталкновения с ракетой
+	int lineAttack[L];		//линия сталкновения с ракетой
 
 public:
 	void insertArm(int);	//появление снаряда
@@ -30,7 +30,7 @@ public:
 	void down();			//перемещение объектов на поле
 	void pos(int);			//рендомное появление астеройда
 	
-	bool* getLineAttack();	//
+	int* getLineAttack();	//
 	int getScore();			//
 
 	Field();				//создаёт пустое поле

@@ -12,6 +12,9 @@ void Score::init(char face)
 	case (int)'T':
 		score = SCR[2];
 		break;
+	case (int)'!':
+		score = SCR[5];
+		break;
 	default:
 		score = SCR[0];
 		break;

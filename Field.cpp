@@ -55,21 +55,21 @@ void Field::down()
 			{
 				//заполн€ет инфо о линии сталкновени€ (29)
 				if (arr[i][j] && !arr[i][j]->getArm())
-					lineAttack[j] = true;
+				{
+					//объект есть, он не снар€д
+					lineAttack[j] = 1;
+					//объект востанавливает арм
+					if (arr[i][j]->getHelper())	
+						lineAttack[j] = 2;
+				}
 				else
-					lineAttack[j] = false;
+					//область пуста
+					lineAttack[j] = 0;
 				//удал€ет
 				Aster* del = arr[i][j];
 				arr[i][j] = NULL;
 				delete del;
 			}
-			////удал€ет сна€рд
-			//if (arr[i][j] && arr[i][j]->getArm() && i == 0)
-			//{
-			//	Aster* del = arr[i][j];
-			//	arr[i][j] = NULL;
-			//	delete del;
-			//}
 		}
 	}
 	//перемещение объектов вниз на 1 область
@@ -98,7 +98,7 @@ void Field::insertArm(int posArm)
 }
 
 //геттеры
-bool* Field::getLineAttack()
+int* Field::getLineAttack()
 {
 	return lineAttack;
 }

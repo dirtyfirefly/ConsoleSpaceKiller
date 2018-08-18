@@ -67,22 +67,24 @@ void Key::show()
 	}
 }
 // проверяте сталкновение ракеты
-void Key::boomRocet(bool* lineAttack)
+void Key::boomRocet(int* lineAttack)
 {
 	for (int i = 0; i < L; i++)
 	{
 		//проверяем на сталкновение
 		//уменьшаем жизни если да
-		if (lineAttack[i] && i == posRoc)
+		if (lineAttack[i] == 1 && i == posRoc)
 			roc.hp.downHP(DMG[0]);
-		lineAttack[i] = false;
+		if (lineAttack[i] == 2 && i == posRoc)
+			roc.arm.regenAmt();
+		lineAttack[i] = 0;
 	}
 }
 //отоброжает состояние ракеты
 void Key::showR(int score)
 {
 	cout << endl << "| life: " << roc.hp.getHP() << "|\t"
-		<< "| arm: -- |" << endl
+		<< "| arm: " << roc.arm.getAmt() << " |" << endl
 		<< "\t| score: " << score << "|" << endl;
 }
 

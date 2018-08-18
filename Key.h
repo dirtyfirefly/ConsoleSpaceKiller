@@ -24,7 +24,7 @@ private:
 	Roc roc;		// объект ракеты
 
 public:
-	void boomRocet(bool*);	// проверяте сталкновение ракеты
+	void boomRocet(int*);	// проверяте сталкновение ракеты
 	int check();			//отслеживание нажатия клавишь
 	void show();			//отоброжение на экран
 	void fixStandart();		//отвечает за изменение стандартного 
