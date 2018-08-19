@@ -51,7 +51,7 @@ Aster::Aster(int i)
 	hp.init(face);
 	score.init(face);
 	damage = 1;
-	if (face == faces[5])
+	if (face == faces[5] || face == faces[6])
 	{
 		helper = true;
 		damage = 0;

@@ -16,7 +16,7 @@
 class Aster
 {
 private:
-	char faces[FACE] = { '*', 'T', 'I', 'V', 'O', '!' };// типы врагов
+	char faces[FACE] = { '*', 'T', 'I', 'V', 'O', '!', '+' };// типы врагов
 
 protected:
 	Score score;	// очки

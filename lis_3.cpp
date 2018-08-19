@@ -63,6 +63,7 @@ void boom(Field& obj1, mutex& m)
 {
 	/*int i = 1;*/
 	int count = 0;
+	int delim = 10;
 	int ast1 = 0;
 
 	srand((unsigned int)time(0));
@@ -87,7 +88,7 @@ void boom(Field& obj1, mutex& m)
 			cout << lineAttack[i] << " ";
 		system("pause");*/
 		//частота появления астеройдов
-		if (!(count++ % 10))
+		if (!(count++ % 3))
 			//появление астеройда
 			obj1.pos(ast1);
 		//вывод на экран
@@ -134,6 +135,5 @@ void rock(Key& r, mutex& m)
 	}
 	//hp ракеты < 1
 	cout << endl << "\t\tgame over" << endl;
-	cout << "score: " << score << endl;
 	system("pause");
 }

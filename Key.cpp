@@ -55,6 +55,7 @@ int Key::check()
 //отоброжение на экран
 void Key::show()
 {
+	cout << "|";
 	//у каждого объекта есть поле face для его отоброжения на экран
 	//
 	//для NULL облостей подразумевается пробел
@@ -65,6 +66,7 @@ void Key::show()
 		else
 			std::cout << line[i]->getFace();
 	}
+	cout << "|";
 }
 // проверяте сталкновение ракеты
 void Key::boomRocet(int* lineAttack)
@@ -77,15 +79,29 @@ void Key::boomRocet(int* lineAttack)
 			roc.hp.downHP(DMG[0]);
 		if (lineAttack[i] == 2 && i == posRoc)
 			roc.arm.regenAmt();
+		if (lineAttack[i] == 3 && i == posRoc)
+			roc.hp.upHP(1);
 		lineAttack[i] = 0;
 	}
 }
 //отоброжает состояние ракеты
 void Key::showR(int score)
 {
-	cout << endl << "| life: " << roc.hp.getHP() << "|\t"
-		<< "| arm: " << roc.arm.getAmt() << " |" << endl
-		<< "\t| score: " << score << "|" << endl;
+	cout << endl;
+	for (int i = 0; i < L+2; i++)
+		cout << "#";
+	cout << endl << "| life: " << roc.hp.getHP() << "| \t "
+		<< "     | arm: ";
+	if (roc.arm.getAmt() > 0)
+		cout << roc.arm.getAmt();
+	else
+		cout << "0";
+	cout << " |" << endl
+		<< "\t  | score: " << score << " |" << endl;
+	for (int i = 0; i < L + 2; i++)
+		cout << "#";
+
+	cout << endl << " ! (+arm)" << endl << " + (+hp)" << endl;
 }
 
 //геттер

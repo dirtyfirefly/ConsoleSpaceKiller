@@ -9,6 +9,7 @@ void Field::show()
 {
 	for (int i = 0; i < H; i++)
 	{
+		cout << "|";
 		for (int j = 0; j < L; j++)
 		{
 			//у объектов есть поле face 
@@ -22,7 +23,7 @@ void Field::show()
 				std::cout << arr[i][j]->getFace();
 			}
 		}
-		std::cout << std::endl;
+		std::cout << "|" << std::endl;
 	}
 }
 //перемещение объектов на поле
@@ -59,8 +60,13 @@ void Field::down()
 					//объект есть, он не снаряд
 					lineAttack[j] = 1;
 					//объект востанавливает арм
-					if (arr[i][j]->getHelper())	
+					if (arr[i][j]->getHelper() &&
+						arr[i][j]->getFace() == '!')	
 						lineAttack[j] = 2;
+					//объетк востанавливает hp
+					if (arr[i][j]->getHelper() &&
+						arr[i][j]->getFace() == '+')
+						lineAttack[j] = 3;
 				}
 				else
 					//область пуста
