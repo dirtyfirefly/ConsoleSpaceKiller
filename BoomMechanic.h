@@ -3,26 +3,23 @@
 //****************************************************//
 // SpaceKiller                                        //
 //                                                    //
-// class HP(h) - отвечает за жизнь объекта            //
+// clss BoomMechanic(h) - отвечает за столкновения    //
+// объектов в поле                                    //
 //----------------------------------------------------//
 // alpha                                              //
 //****************************************************//
 
 #pragma once
-#include "globals.h"
+#include "Aster.h"
 
-class HP
+class BoomMechanic
 {
 private:
-	int hp;			// показатель hp
 
 public:
-	void downHP(int);	// уменьшает hp
-	void upHP(int);		// увеличивает hp
-	void init(char);	// устанавливает количество hp
-						// в зависимсоти от face объекта
-	int getHP();		// 
+	bool boomWithArm(Aster*);	//проверяет наличие объекта
 
-	HP();		// hp == 1
-	~HP();
+	BoomMechanic();				//
+	~BoomMechanic();
 };
+

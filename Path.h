@@ -3,26 +3,29 @@
 //****************************************************//
 // SpaceKiller                                        //
 //                                                    //
-// class HP(h) - отвечает за жизнь объекта            //
+// clss Path(h) - отвечает за алгоритмы перемещений   //
+// объектов по полю                                   //
 //----------------------------------------------------//
 // alpha                                              //
 //****************************************************//
 
 #pragma once
+#include "Aster.h"
+#include "BoomMechanic.h"
 #include "globals.h"
 
-class HP
+class Path
 {
 private:
-	int hp;			// показатель hp
+	BoomMechanic boomWO;
+	int scoreTmp;
 
 public:
-	void downHP(int);	// уменьшает hp
-	void upHP(int);		// увеличивает hp
-	void init(char);	// устанавливает количество hp
-						// в зависимсоти от face объекта
-	int getHP();		// 
+	void downMoveStd(Aster* arr[][L]);	// сдвиг вниз на 1
+	void upMoveStd(Aster* arr[][L]);	// сдвиг вверх на 1
 
-	HP();		// hp == 1
-	~HP();
+	int getScore();	//
+
+	Path();			//
+	~Path();
 };
