@@ -15,9 +15,7 @@
 class BlastArm : public Aster
 {
 private:
-
 public:
-
 	BlastArm();		// устанавливает флаг arm
 					// устанавливает face как |
 	~BlastArm();
